@@ -20,6 +20,8 @@ Input: nums = [7,7,7,7,7,7,7]
 Output: 1
 
 Follow up: Can you come up with an algorithm that runs in O(n log(n)) time complexity?
+
+Link: https://leetcode.com/problems/longest-increasing-subsequence/description/
 */
 class Solution {
 public:
