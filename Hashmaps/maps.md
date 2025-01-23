@@ -18,6 +18,10 @@ Examples to Practice Maps:
 
 1. [Map Operations](https://www.geeksforgeeks.org/problems/map-operations/1?page=1)
 2. [Array subset of another array](https://www.geeksforgeeks.org/problems/array-subset-of-another-array2317/1)
+3. [Max Distance b/w same elements](https://www.geeksforgeeks.org/problems/max-distance-between-same-elements/1)
+4. [Sub Arrays with equal 1s and 0s](https://www.geeksforgeeks.org/problems/count-subarrays-with-equal-number-of-1s-and-0s-1587115620/1?)
+5. 
+
 
 Examples to Practice:
 

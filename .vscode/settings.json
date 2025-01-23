@@ -1,0 +1,11 @@
+{
+    "files.associations": {
+        "*.ejs": "html",
+        "*.scss": "scss",
+        "random": "cpp",
+        "ostream": "cpp",
+        "string": "cpp",
+        "*.tcc": "cpp",
+        "vector": "cpp"
+    }
+}
