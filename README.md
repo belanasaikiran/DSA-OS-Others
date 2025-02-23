@@ -12,7 +12,7 @@
 
 ### Others
 
-- Check Leetcode problems here: [Leetcode](./Leetcode/)
+- Check Leetcode problems here: [Leetcode](./LeetCode/)
 - SOLID Principles: [SOLID](./SOLID/README.md)
 
 
