@@ -1,5 +1,6 @@
 #include "ItemInCommon.h"
 #include<iostream>
+#include <unordered_map>
 
 bool itemInCommon(vector<int> vect1, vector<int> vect2) {
 	//   +=====================================================+
@@ -19,19 +20,20 @@ bool itemInCommon(vector<int> vect1, vector<int> vect2) {
 	//   | - Loop through 'vect2' and check against 'myMap'.   |
 	//   | - Check output from Test.cpp in "User logs".        |
 	//   +=====================================================+
-  std::unordered_map<int, bool> mp;
 
-  for(auto i : vect1){ 
-    mp.insert({i, true});
-  } 
+	unordered_map<int, bool> finder;
 
-  for(auto i : vect2){
-	if(mp[i]){
-		return true;
+	for(auto i : vect1){
+	   finder.insert({i, true});
 	}
-  }
 
-  return 0;
+	for(auto i : vect2){
+	   if(finder[i]){ // if already exists
+				return true;
+		}
+	}
+
+	return false;
 
 }
 

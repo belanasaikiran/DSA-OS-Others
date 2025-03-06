@@ -1,5 +1,6 @@
 #include "FindDuplicates.h"
 #include <unordered_map>
+#include <vector>
 
 vector<int> findDuplicates(const vector<int> &nums) {
   //   +=====================================================+
@@ -18,26 +19,27 @@ vector<int> findDuplicates(const vector<int> &nums) {
   //   | - 'duplicates' stores duplicate integers found.     |
   //   | - Check output from Test.cpp in "User logs".        |
   //   +=====================================================+
-  unordered_map<int, int> numCounts;
 
-  vector<int> duplicates;
-  // Filler
-  for (auto itr : nums) {
-      if(numCounts.find(itr) == numCounts.end()){
-          numCounts.insert({itr,1});
-      } else { // found
-          numCounts[itr]++;
-      }
-            cout << "numscount: "<< itr << ": " << numCounts[itr] << endl;
-  }
+    unordered_map<int, int> mp;
 
-  for(auto itr: numCounts){
-      if(itr.second > 1){
-          duplicates.push_back(itr.first);
-      }
-  }
+    vector<int> duplicateReturner;
 
-  return duplicates;
+    for(auto i : nums){
+        if(mp.find(i) == mp.end()){ // unavailable
+            mp.insert({i,1});
+        } else {
+            mp[i]++;
+        }
+    }
+
+    for(auto i : mp){
+        if(i.second > 1){ // if the value is greater than 1 (NOTE: We are traversing through the map, that's why `i`)
+            duplicateReturner.push_back(i.first);
+        }
+    }
+
+
+    return duplicateReturner;
 }
 
 int main() {

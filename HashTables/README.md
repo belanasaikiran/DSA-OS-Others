@@ -43,6 +43,8 @@ Also called Linear Probing, Quadratic Probing, and Double Hashing.
 | Insert | O(1) | O(n) |
 | Delete | O(1) | O(n) |
 
+We assume it is O(1) because the hash function distributes the keys uniformly across the array. But in the worst case, all the elements hash to the same index, and we have to search through a linked list to find the element. This is why the worst-case time complexity is O(n).
+
 > The worst-case time complexity is O(n) because all the elements hash to the same index. This is why it is important to have a good hash function that distributes the keys uniformly across the array.
 
 ![Big O](./bigO.png)

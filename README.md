@@ -8,6 +8,8 @@
 4. [Trees](./Trees/README.md)
 5. [HashTables](./HashTables/README.md)
 6. [Sets](./Sets/README.md)
+7. [Graphs](./Graphs/README.md)
+8. [Heap & Priority Queues](./Heap/heap.md)
 
 
 ### Others
