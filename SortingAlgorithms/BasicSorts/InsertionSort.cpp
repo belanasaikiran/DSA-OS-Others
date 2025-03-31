@@ -8,7 +8,7 @@ void InsertionSort(int *arr, int &size){
     for(int i = 1; i < size; i++){
         int temp = arr[i];
         int j = i - 1;
-        while(temp < arr[j]){
+        while(temp < arr[j] && j > -1){
             arr[j+1] = arr[j]; // swap but note -> initially, arr[j+1] could be arr[i] itself but the j keeps changing in this loop
             arr[j] = temp;
             j--;

@@ -24,6 +24,10 @@ void init_resources(){
     }
 }
 
-int acquire_resource(int handler){
+void acquire_resource(int handler){
+    for(int i = 0; i < NUM_RESOURCES; i++){
+        resource_pool[i].id = i;
+        pthread_mutex_init(&resource_lock[i], NULL);
+    }
 
 }
