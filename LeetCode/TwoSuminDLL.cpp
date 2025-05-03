@@ -18,17 +18,12 @@ class Node {
 
 public:
   int value;
-
   Node *next;
-
   Node *prev;
 
   Node(int value) {
-
     this->value = value;
-
     next = nullptr;
-
     prev = nullptr;
   }
 };
@@ -37,9 +32,7 @@ class DoublyLinkedList {
 
 private:
   int length;
-
   Node *head;
-
   Node *tail;
 
 public:
@@ -51,20 +44,32 @@ public:
   };
 
   void append(int value) {
-
-    Node *temp = head;
-    Node *prevNode = nullptr;
-    while (temp->next != nullptr) {
-      prevNode = temp;
-      temp = temp->next;
-    }
-
     // last node
     Node *newNode = new Node(value);
-    temp->next = newNode;
-    newNode->prev = temp;
+    newNode->next = nullptr;
+    tail->next = newNode;
+    newNode->prev = tail;
     tail = newNode;
     length++;
+  }
+
+  void printDLL() {
+    Node *temp = head;
+    Node *backTemp = tail;
+    cout << "L to R: \n";
+    while (temp != nullptr) {
+      cout << temp->value << "->";
+      temp = temp->next;
+    }
+    cout << "nullptr" << endl;
+
+    cout << "R to L: \n";
+    while (backTemp != nullptr) {
+      cout << backTemp->value << "<-";
+      backTemp = backTemp->prev;
+    }
+
+    cout << "nullptr" << endl;
   }
 
   vector<pair<int, int>> answer(int x) {
@@ -103,6 +108,36 @@ public:
     }
     return returnFoundValues;
   }
+
+
+  // STILL NEED TO FIX THIS
+  vector<pair<int, int>> TwoSum(int x) { // O(log n)
+
+    vector<pair<int, int>> xPairs;
+    Node *left = head;
+    Node *right = tail;
+
+    while (left != right) {
+
+      int sum = left->value + right->value;
+      if (sum > x) {
+        right = right->prev;
+        continue;
+      } else if (sum < x) {
+        left = left->next;
+        continue;
+      } else {
+        pair<int, int> foundPair = {left->value, right->value};
+        xPairs.push_back(foundPair);
+        foundPair = {right->value, left->value};
+        xPairs.push_back(foundPair);
+      }
+
+      left = left->next;
+      right = right->prev;
+    }
+    return xPairs;
+  }
 };
 
 bool testCaseChecker(int x, DoublyLinkedList *DLL,
@@ -110,6 +145,9 @@ bool testCaseChecker(int x, DoublyLinkedList *DLL,
   //  Call the class here.
   vector<pair<int, int>> answers = DLL->answer(x);
   cout << "Pairs matching " << x << ": \n";
+
+  sort(answers.begin(), answers.end());
+  cout << "SIZE:" << answers.size() << endl;
   for (auto eachpair : answers) {
     cout << "[" << eachpair.first << ", " << eachpair.second << "] \n";
   }
@@ -127,6 +165,9 @@ int main() {
   DLL->append(3);
   DLL->append(4);
   DLL->append(5);
+
+  DLL->printDLL();
+
   vector<pair<int, int>> comparePair5 = {{1, 4}, {2, 3}, {3, 2}, {4, 1}};
   vector<pair<int, int>> comparePair6 = {{1, 5}, {2, 4}, {4, 2}, {5, 1}};
 

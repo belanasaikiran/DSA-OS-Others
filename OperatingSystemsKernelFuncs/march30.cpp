@@ -26,11 +26,8 @@ bool ScanBufOVerflow(FILE *fp){
 
     }
 
-    // ```cpp
     // int buffer[10];
-
     // buffer[11] = 2;
-    // ```
 
 
     fclose(fp);
