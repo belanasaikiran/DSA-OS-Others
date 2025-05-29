@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
+#include <set>
 #include <algorithm>
-
 using namespace std;
 
 class Solution {
@@ -41,5 +41,30 @@ public:
     }
 
     return answer;
+  }
+
+
+  vector<vector<int>> BruteForce(vector<int>& nums) {
+      set<vector<int>> uniqueTriplets;
+      vector<vector<int>> answer;
+      // Brute force
+      for(int i = 0; i < nums.size(); i++){
+          for(int j = i+1; j < nums.size(); j++){
+              for(int k = j+1; k < nums.size(); k++){
+                  int sum = nums[i] + nums[j] + nums[k];
+                  if(sum == 0) {
+                      vector<int> triplet = {nums[i], nums[j], nums[k]};
+                      sort(triplet.begin(),triplet.end());
+                      uniqueTriplets.insert(triplet);
+                  }
+              }
+          }
+      }
+
+      for(const auto& eachTriplet : uniqueTriplets){
+          answer.push_back(eachTriplet);
+      }
+
+      return answer;
   }
 };
