@@ -1,58 +1,51 @@
 #include <iostream>
 
-using namespace std;
+struct Sorting{
+    void quickSort(int arr[], int left, int right){
+        if(right <= left) return;
 
-class QuickSort {
+        int pivot = pivotIndex(arr, left, right);
+        quickSort(arr, left, pivot);
+        quickSort(arr, pivot+1, right);
 
-public:
-  void quickSort(int arr[], int leftIndex, int rightIndex) {
-    if (leftIndex >= rightIndex)
-      return;
-
-    int pivotIndex = pivot(arr, leftIndex, rightIndex);
-
-    quickSort(arr, leftIndex, pivotIndex - 1);
-    quickSort(arr, pivotIndex + 1, rightIndex);
-  }
-
-  int pivot(int arr[], int pivotIndex, int endIndex) {
-    int swapIndex = pivotIndex;
-    for (int i = pivotIndex + 1; i <= endIndex; i++) {
-      if (arr[i] < arr[pivotIndex]) {
-        swapIndex++;
-        swap(arr, swapIndex, i);
-      }
     }
-    swap(arr, pivotIndex, swapIndex);
 
-    return swapIndex;
-  };
+    int pivotIndex(int arr[], int pivotIndex, int right){
 
-  void swap(int arr[], int firstIndex, int secondIndex) {
-      int temp = arr[firstIndex];
-      arr[firstIndex] = arr[secondIndex];
-      arr[secondIndex] = temp;
-  }
+        int swapIndex = pivotIndex;
+        for(int i = pivotIndex + 1; i < right; i++){
+            if(arr[i] < arr[pivotIndex]){
+                swapIndex++;
+                swap(arr, swapIndex, i);
+            }
+        }
+        swap(arr, swapIndex, pivotIndex);
+        return swapIndex;
+    }
+
+    void swap(int arr[], int left, int right){
+        int temp = arr[left];
+        arr[left] = arr[right];
+        arr[right] = temp;
+    }
+
+    void printArr(int arr[], int size){
+        std::cout <<  "[ ";
+        for(int i = 0; i <  size; i++){
+            if(i != size - 1) std::cout << arr[i] << ", ";
+            else std::cout << arr[i] << "]";
+        }
+    }
 };
 
-int main() {
+int main(){
+    int arr[] = {9, 7, 2, 5, 6, 1, 4, 3};
 
-  int arr[] = {4, 6, 1, 7, 3, 2, 5};
-  int size = sizeof(arr) / sizeof(arr[0]);
+    int right = sizeof(arr)/sizeof(arr[0]);
 
-  QuickSort *sort = new QuickSort();
+    Sorting* sorter = new Sorting;
+    sorter->quickSort(arr, 0, right);
+    sorter->printArr(arr, right);
 
-  // int returnedIndex = sort->pivot(arr, 0, size - 1);
-  // cout << "Returned Index: " << returnedIndex << "\n\n";
-
-  sort->quickSort(arr, 0, size - 1);
-
-
-  for(auto value : arr){
-      cout << value << " ";
-  }
-  cout << endl;
-
-
-  return 0;
+    return 0;
 }
